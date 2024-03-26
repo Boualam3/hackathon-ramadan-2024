@@ -45,10 +45,23 @@ const createPost = async (req, res) => {
 // Get all posts
 const getPosts = async (req, res) => {
   try {
+    // Find all posts without specifying a category
     const posts = await Post.find();
     res.status(200).json(posts);
   } catch (error) {
     console.error("Error fetching posts:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+// Get posts by category
+const getPostsByCategory = async (req, res) => {
+  try {
+    const categoryId = req.params.categoryId;
+    const posts = await Post.find({ category: categoryId });
+    res.status(200).json(posts);
+  } catch (error) {
+    console.error("Error fetching posts by category:", error);
     res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -113,4 +126,5 @@ module.exports = {
   getPostById,
   updatePostById,
   deletePostById,
+  getPostsByCategory,
 };
