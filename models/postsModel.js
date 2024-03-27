@@ -19,7 +19,7 @@ const postSchema = new mongoose.Schema({
   // Attachments to the post (photo or video)
   attachments: [{ type: String }], // TODO
   // Button to initiate a chat with the owner's post
-  chatButton: { type: Boolean, default: true },
+  chatButton: { type: Boolean, default: false },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
 });

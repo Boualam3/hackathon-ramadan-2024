@@ -18,7 +18,8 @@ const createPost = async (req, res) => {
       content,
       category,
       theDesiredAmount,
-      user: userId, // Set user field with userId
+      user: userId,
+      chatButton: true,
     });
 
     // Save post to database
